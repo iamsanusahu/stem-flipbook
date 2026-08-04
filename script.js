@@ -59,8 +59,15 @@ speechSynthesis.speak(speech);
 
 }
 
-window.onload=()=>{
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        speechSynthesis.cancel();
 
-setTimeout(speakAgain,500);
+        const speech = new SpeechSynthesisUtterance(questions[page].text);
+        speech.rate = 1;
+        speech.pitch = 1;
+        speech.lang = "en-US";
 
-};
+        speechSynthesis.speak(speech);
+    }, 1000);
+});
